@@ -82,6 +82,18 @@ const Buttons = styled.div`
   gap: 16px;
 `;
 
+const InfoButton = styled.button`
+  padding: 12px 28px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid #fff;
+  &:hover {
+    background-color: #d8d8d822;
+    border: none;
+    cursor: pointer;
+  }
+`;
+
 const PlanetImage = styled.img`
   max-width: 40vw;
 `;
@@ -228,27 +240,27 @@ export default function Planet({
             </PlanetSource>
           </div>
           <Buttons>
-            <button
+            <InfoButton
               onClick={() => {
                 setSelected(0);
               }}
             >
               01
-            </button>
-            <button
+            </InfoButton>
+            <InfoButton
               onClick={() => {
                 setSelected(1);
               }}
             >
               02
-            </button>
-            <button
+            </InfoButton>
+            <InfoButton
               onClick={() => {
                 setSelected(2);
               }}
             >
               03
-            </button>
+            </InfoButton>
           </Buttons>
         </PlanetAside>
       </PlanetMain>
