@@ -6,6 +6,9 @@ const PlanetCont = styled.div`
   display: flex;
   flex-direction: column;
   padding: 5% 165px 51px;
+  @media screen and (max-width: 1045px) {
+    padding: 16px 39px 36px;
+  }
 `;
 
 const PlanetMain = styled.main`
@@ -14,11 +17,24 @@ const PlanetMain = styled.main`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 87px;
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+    margin-bottom: 27px;
+  }
 `;
 
 const PlanetAside = styled.aside`
   width: 50%;
   max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 800px) {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    max-width: none;
+    align-items: center;
+  }
 `;
 
 const PlanetAsideTitle = styled.h1`
@@ -30,6 +46,9 @@ const PlanetAsideTitle = styled.h1`
   line-height: normal;
   text-transform: uppercase;
   margin-bottom: 23px;
+  @media screen and (max-width: 800px) {
+    font-size: 48px;
+  }
 `;
 
 const PlanetAsideDescr = styled.p`
@@ -40,6 +59,9 @@ const PlanetAsideDescr = styled.p`
   font-weight: 400;
   line-height: 25px; /* 178.571% */
   margin-bottom: 24px;
+  @media screen and (max-width: 800px) {
+    font-size: 11px;
+  }
 `;
 
 const PlanetSource = styled.span`
@@ -61,7 +83,7 @@ const Buttons = styled.div`
 `;
 
 const PlanetImage = styled.img`
-  margin-left: 0;
+  max-width: 40vw;
 `;
 
 const PlanetImages = styled.div`
@@ -70,6 +92,9 @@ const PlanetImages = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: 800px) {
+    min-height: 460px;
+  }
 `;
 
 const PlanetGeologyImg = styled.img`
@@ -90,6 +115,9 @@ const PlanetFooter = styled.footer`
 const PlanetFooterBox = styled.div`
   border: 1px solid #ffffff36;
   padding: 20px 23px 27px;
+  @media screen and (max-width: 1045px) {
+    padding: 16px 15px 18px;
+  }
 `;
 
 const PlanetFooterBoxTitle = styled.h4`
@@ -113,6 +141,9 @@ const PlanetFooterBoxContent = styled.span`
   line-height: normal;
   letter-spacing: -1.5px;
   text-transform: uppercase;
+  @media screen and (max-width: 1045px) {
+    font-size: 24px;
+  }
 `;
 
 export default function Planet({
@@ -186,14 +217,16 @@ export default function Planet({
         </PlanetImages>
 
         <PlanetAside>
-          <PlanetAsideTitle>{planetName}</PlanetAsideTitle>
-          <PlanetAsideDescr>{selectedContent()}</PlanetAsideDescr>
-          <PlanetSource>
-            Source :{" "}
-            <a href={selectedSource()} target="_blank">
-              Wikipedia <img src={sourceIcon} />
-            </a>
-          </PlanetSource>
+          <div style={{ width: "50%" }}>
+            <PlanetAsideTitle>{planetName}</PlanetAsideTitle>
+            <PlanetAsideDescr>{selectedContent()}</PlanetAsideDescr>
+            <PlanetSource>
+              Source :{" "}
+              <a href={selectedSource()} target="_blank">
+                Wikipedia <img src={sourceIcon} />
+              </a>
+            </PlanetSource>
+          </div>
           <Buttons>
             <button
               onClick={() => {

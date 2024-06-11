@@ -8,6 +8,12 @@ const HeaderComp = styled.header`
   height: 85px;
   padding: 0 41px 0 32px;
   border-bottom: 1px solid #ffffff24;
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+    padding: 32px 53px 27px 51px;
+    height: auto;
+    gap: 39px;
+  }
 `;
 
 const HeaderLogo = styled.h2`
