@@ -16,6 +16,12 @@ export default function Neptune() {
       planetRevolutionTime={Neptune?.revolution}
       planetRadius={Neptune?.radius}
       planetTemp={Neptune?.temperature}
+      planetStructure={Neptune?.structure.content}
+      planetGeology={Neptune?.geology.content}
+      planetStructureSource={Neptune?.structure.source}
+      planetGeologySource={Neptune?.geology.source}
+      planetInternal={Neptune?.images.internal}
+      planetGeologyImg={Neptune?.images.geology}
     />
   );
 }

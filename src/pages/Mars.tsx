@@ -16,6 +16,12 @@ export default function Mars() {
       planetRevolutionTime={Mars?.revolution}
       planetRadius={Mars?.radius}
       planetTemp={Mars?.temperature}
+      planetStructure={Mars?.structure.content}
+      planetGeology={Mars?.geology.content}
+      planetStructureSource={Mars?.structure.source}
+      planetGeologySource={Mars?.geology.source}
+      planetInternal={Mars?.images.internal}
+      planetGeologyImg={Mars?.images.geology}
     />
   );
 }

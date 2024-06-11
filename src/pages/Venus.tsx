@@ -16,6 +16,12 @@ export default function Venus() {
       planetRevolutionTime={Venus?.revolution}
       planetRadius={Venus?.radius}
       planetTemp={Venus?.temperature}
+      planetStructure={Venus?.structure.content}
+      planetGeology={Venus?.geology.content}
+      planetStructureSource={Venus?.structure.source}
+      planetGeologySource={Venus?.geology.source}
+      planetInternal={Venus?.images.internal}
+      planetGeologyImg={Venus?.images.geology}
     />
   );
 }

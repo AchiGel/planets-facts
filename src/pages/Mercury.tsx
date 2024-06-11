@@ -16,6 +16,12 @@ export default function Mercury() {
       planetRevolutionTime={Mercury?.revolution}
       planetRadius={Mercury?.radius}
       planetTemp={Mercury?.temperature}
+      planetStructure={Mercury?.structure.content}
+      planetGeology={Mercury?.geology.content}
+      planetStructureSource={Mercury?.structure.source}
+      planetGeologySource={Mercury?.geology.source}
+      planetInternal={Mercury?.images.internal}
+      planetGeologyImg={Mercury?.images.geology}
     />
   );
 }

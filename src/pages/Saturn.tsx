@@ -16,6 +16,12 @@ export default function Saturn() {
       planetRevolutionTime={Saturn?.revolution}
       planetRadius={Saturn?.radius}
       planetTemp={Saturn?.temperature}
+      planetStructure={Saturn?.structure.content}
+      planetGeology={Saturn?.geology.content}
+      planetStructureSource={Saturn?.structure.source}
+      planetGeologySource={Saturn?.geology.source}
+      planetInternal={Saturn?.images.internal}
+      planetGeologyImg={Saturn?.images.geology}
     />
   );
 }

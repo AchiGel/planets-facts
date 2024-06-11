@@ -16,6 +16,12 @@ export default function Uranus() {
       planetRevolutionTime={Uranus?.revolution}
       planetRadius={Uranus?.radius}
       planetTemp={Uranus?.temperature}
+      planetStructure={Uranus?.structure.content}
+      planetGeology={Uranus?.geology.content}
+      planetStructureSource={Uranus?.structure.source}
+      planetGeologySource={Uranus?.geology.source}
+      planetInternal={Uranus?.images.internal}
+      planetGeologyImg={Uranus?.images.geology}
     />
   );
 }

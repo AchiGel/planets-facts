@@ -16,6 +16,12 @@ export default function Jupiter() {
       planetRevolutionTime={Jupiter?.revolution}
       planetRadius={Jupiter?.radius}
       planetTemp={Jupiter?.temperature}
+      planetStructure={Jupiter?.structure.content}
+      planetGeology={Jupiter?.geology.content}
+      planetStructureSource={Jupiter?.structure.source}
+      planetGeologySource={Jupiter?.geology.source}
+      planetInternal={Jupiter?.images.internal}
+      planetGeologyImg={Jupiter?.images.geology}
     />
   );
 }
