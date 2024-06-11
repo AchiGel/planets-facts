@@ -4,13 +4,18 @@ import Planet from "../Components/Planet";
 
 export default function Jupiter() {
   const data = useContext(DataContext);
-  const jupiter = data.find((item) => item.name === "Jupiter");
-  console.log(jupiter);
+  const Jupiter = data.find((item) => item.name === "Jupiter");
+
   return (
     <Planet
-      planetImg={jupiter?.images.planet}
-      planetName={jupiter?.name}
-      planetOverview={jupiter?.overview.content}
+      planetImg={Jupiter?.images.planet}
+      planetName={Jupiter?.name}
+      planetOverview={Jupiter?.overview.content}
+      planetSource={Jupiter?.overview.source}
+      planetRotationTime={Jupiter?.rotation}
+      planetRevolutionTime={Jupiter?.revolution}
+      planetRadius={Jupiter?.radius}
+      planetTemp={Jupiter?.temperature}
     />
   );
 }

@@ -68,6 +68,29 @@ const PlanetFooterBox = styled.div`
   padding: 20px 23px 27px;
 `;
 
+const PlanetFooterBoxTitle = styled.h4`
+  color: #fff;
+  font-family: "League Spartan";
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px; /* 227.273% */
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.5;
+`;
+
+const PlanetFooterBoxContent = styled.span`
+  color: #fff;
+  font-family: "Antonio";
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+`;
+
 export default function Planet({
   planetImg,
   planetName,
@@ -104,20 +127,22 @@ export default function Planet({
       </PlanetMain>
       <PlanetFooter>
         <PlanetFooterBox>
-          <h3>ROTATION TIME</h3>
-          <h2>{planetRotationTime}</h2>
+          <PlanetFooterBoxTitle>ROTATION TIME</PlanetFooterBoxTitle>
+          <PlanetFooterBoxContent>{planetRotationTime}</PlanetFooterBoxContent>
         </PlanetFooterBox>
         <PlanetFooterBox>
-          <h3>REVOLUTION TIME</h3>
-          <h2>{planetRevolutionTime}</h2>
+          <PlanetFooterBoxTitle>REVOLUTION TIME</PlanetFooterBoxTitle>
+          <PlanetFooterBoxContent>
+            {planetRevolutionTime}
+          </PlanetFooterBoxContent>
         </PlanetFooterBox>
         <PlanetFooterBox>
-          <h3>radius</h3>
-          <h2>{planetRadius}</h2>
+          <PlanetFooterBoxTitle>radius</PlanetFooterBoxTitle>
+          <PlanetFooterBoxContent>{planetRadius}</PlanetFooterBoxContent>
         </PlanetFooterBox>
         <PlanetFooterBox>
-          <h3>AVERAGE TEMP.</h3>
-          <h2>{planetTemp}</h2>
+          <PlanetFooterBoxTitle>AVERAGE TEMP.</PlanetFooterBoxTitle>
+          <PlanetFooterBoxContent>{planetTemp}</PlanetFooterBoxContent>
         </PlanetFooterBox>
       </PlanetFooter>
     </PlanetCont>

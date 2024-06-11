@@ -5,7 +5,7 @@ import Planet from "../Components/Planet";
 export default function Earth() {
   const data = useContext(DataContext);
   const Earth = data.find((item) => item.name === "Earth");
-  console.log(Earth);
+
   return (
     <Planet
       planetImg={Earth?.images.planet}
