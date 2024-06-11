@@ -1,23 +1,24 @@
 import styled from "styled-components";
 import sourceIcon from "/assets/icon-source.svg";
+import { useState } from "react";
 
 const PlanetCont = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 126px 165px 51px;
+  padding: 5% 165px 51px;
 `;
 
 const PlanetMain = styled.main`
   color: white;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 87px;
 `;
 
 const PlanetAside = styled.aside`
   width: 50%;
-  max-width: 165px;
+  max-width: 350px;
 `;
 
 const PlanetAsideTitle = styled.h1`
@@ -42,6 +43,7 @@ const PlanetAsideDescr = styled.p`
 `;
 
 const PlanetSource = styled.span`
+  display: inline-block;
   color: #fff;
   font-family: "League Spartan";
   font-size: 14px;
@@ -49,11 +51,18 @@ const PlanetSource = styled.span`
   font-weight: 400;
   line-height: 25px; /* 178.571% */
   opacity: 0.5;
+  margin-bottom: 39px;
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 `;
 
 const PlanetImage = styled.img`
-  width: 100%;
-  max-width: 290px;
+  margin-left: 10%;
+  max-width: 45%;
 `;
 
 const PlanetFooter = styled.footer`
@@ -100,6 +109,12 @@ export default function Planet({
   planetRevolutionTime,
   planetRadius,
   planetTemp,
+  planetStructure,
+  planetGeology,
+  planetStructureSource,
+  planetGeologySource,
+  planetInternal,
+  planetGeologyImg,
 }: {
   planetImg: string | undefined;
   planetName: string | undefined;
@@ -109,20 +124,78 @@ export default function Planet({
   planetRevolutionTime: string | undefined;
   planetRadius: string | undefined;
   planetTemp: string | undefined;
+  planetStructure: string | undefined;
+  planetGeology: string | undefined;
+  planetStructureSource: string | undefined;
+  planetGeologySource: string | undefined;
+  planetInternal: string | undefined;
+  planetGeologyImg: string | undefined;
 }) {
+  const [selected, setSelected] = useState(0);
+
+  function selectedContent() {
+    if (selected === 0) {
+      return planetOverview;
+    } else if (selected === 1) {
+      return planetStructure;
+    }
+    return planetGeology;
+  }
+
+  function selectedSource() {
+    if (selected === 0) {
+      return planetSource;
+    } else if (selected === 1) {
+      return planetStructureSource;
+    }
+    return planetGeologySource;
+  }
+
+  function selectedImg() {
+    if (selected === 0) {
+      return planetImg;
+    } else if (selected === 1) {
+      return planetInternal;
+    }
+    return planetGeologyImg;
+  }
+
   return (
     <PlanetCont>
       <PlanetMain>
-        <PlanetImage src={planetImg} />
+        <PlanetImage src={selectedImg()} />
         <PlanetAside>
           <PlanetAsideTitle>{planetName}</PlanetAsideTitle>
-          <PlanetAsideDescr>{planetOverview}</PlanetAsideDescr>
+          <PlanetAsideDescr>{selectedContent()}</PlanetAsideDescr>
           <PlanetSource>
             Source :{" "}
-            <a href={planetSource} target="_blank">
+            <a href={selectedSource()} target="_blank">
               Wikipedia <img src={sourceIcon} />
             </a>
           </PlanetSource>
+          <Buttons>
+            <button
+              onClick={() => {
+                setSelected(0);
+              }}
+            >
+              01
+            </button>
+            <button
+              onClick={() => {
+                setSelected(1);
+              }}
+            >
+              02
+            </button>
+            <button
+              onClick={() => {
+                setSelected(2);
+              }}
+            >
+              03
+            </button>
+          </Buttons>
         </PlanetAside>
       </PlanetMain>
       <PlanetFooter>

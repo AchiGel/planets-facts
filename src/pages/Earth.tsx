@@ -16,6 +16,12 @@ export default function Earth() {
       planetRevolutionTime={Earth?.revolution}
       planetRadius={Earth?.radius}
       planetTemp={Earth?.temperature}
+      planetStructure={Earth?.structure.content}
+      planetGeology={Earth?.geology.content}
+      planetStructureSource={Earth?.structure.source}
+      planetGeologySource={Earth?.geology.source}
+      planetInternal={Earth?.images.internal}
+      planetGeologyImg={Earth?.images.geology}
     />
   );
 }
