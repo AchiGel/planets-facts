@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import sourceIcon from "/assets/icon-source.svg";
 
 const PlanetCont = styled.div`
   display: flex;
@@ -17,6 +18,37 @@ const PlanetMain = styled.main`
 const PlanetAside = styled.aside`
   width: 50%;
   max-width: 165px;
+`;
+
+const PlanetAsideTitle = styled.h1`
+  color: #fff;
+  font-family: "Antonio";
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  margin-bottom: 23px;
+`;
+
+const PlanetAsideDescr = styled.p`
+  color: #fff;
+  font-family: "League Spartan";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px; /* 178.571% */
+  margin-bottom: 24px;
+`;
+
+const PlanetSource = styled.span`
+  color: #fff;
+  font-family: "League Spartan";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px; /* 178.571% */
+  opacity: 0.5;
 `;
 
 const PlanetImage = styled.img`
@@ -40,36 +72,52 @@ export default function Planet({
   planetImg,
   planetName,
   planetOverview,
+  planetSource,
+  planetRotationTime,
+  planetRevolutionTime,
+  planetRadius,
+  planetTemp,
 }: {
   planetImg: string | undefined;
   planetName: string | undefined;
   planetOverview: string | undefined;
+  planetSource: string | undefined;
+  planetRotationTime: string | undefined;
+  planetRevolutionTime: string | undefined;
+  planetRadius: string | undefined;
+  planetTemp: string | undefined;
 }) {
   return (
     <PlanetCont>
       <PlanetMain>
         <PlanetImage src={planetImg} />
         <PlanetAside>
-          <h1>{planetName}</h1>
-          <p>{planetOverview}</p>
+          <PlanetAsideTitle>{planetName}</PlanetAsideTitle>
+          <PlanetAsideDescr>{planetOverview}</PlanetAsideDescr>
+          <PlanetSource>
+            Source :{" "}
+            <a href={planetSource} target="_blank">
+              Wikipedia <img src={sourceIcon} />
+            </a>
+          </PlanetSource>
         </PlanetAside>
       </PlanetMain>
       <PlanetFooter>
         <PlanetFooterBox>
           <h3>ROTATION TIME</h3>
-          <h2>{planetImg}</h2>
+          <h2>{planetRotationTime}</h2>
         </PlanetFooterBox>
         <PlanetFooterBox>
           <h3>REVOLUTION TIME</h3>
-          <h2>{planetImg}</h2>
+          <h2>{planetRevolutionTime}</h2>
         </PlanetFooterBox>
         <PlanetFooterBox>
           <h3>radius</h3>
-          <h2>{planetImg}</h2>
+          <h2>{planetRadius}</h2>
         </PlanetFooterBox>
         <PlanetFooterBox>
           <h3>AVERAGE TEMP.</h3>
-          <h2>{planetImg}</h2>
+          <h2>{planetTemp}</h2>
         </PlanetFooterBox>
       </PlanetFooter>
     </PlanetCont>
