@@ -61,8 +61,23 @@ const Buttons = styled.div`
 `;
 
 const PlanetImage = styled.img`
-  margin-left: 10%;
-  max-width: 45%;
+  margin-left: 0;
+`;
+
+const PlanetImages = styled.div`
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const PlanetGeologyImg = styled.img`
+  width: 160px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
 `;
 
 const PlanetFooter = styled.footer`
@@ -157,13 +172,19 @@ export default function Planet({
     } else if (selected === 1) {
       return planetInternal;
     }
-    return planetGeologyImg;
+    return planetImg;
   }
 
   return (
     <PlanetCont>
       <PlanetMain>
-        <PlanetImage src={selectedImg()} />
+        <PlanetImages>
+          <PlanetImage src={selectedImg()} />
+          <PlanetGeologyImg
+            src={selected === 2 ? planetGeologyImg : undefined}
+          />
+        </PlanetImages>
+
         <PlanetAside>
           <PlanetAsideTitle>{planetName}</PlanetAsideTitle>
           <PlanetAsideDescr>{selectedContent()}</PlanetAsideDescr>
