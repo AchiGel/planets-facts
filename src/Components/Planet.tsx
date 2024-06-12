@@ -87,20 +87,31 @@ const Buttons = styled.div`
 `;
 
 const InfoButton = styled.button<buttonColor>`
+  text-align: left;
   padding: 12px 28px;
   background-color: transparent;
   color: white;
-  border: 1px solid #fff;
+  border: 1px solid #ffffff21;
+
+  font-family: "League Spartan";
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 25px; /* 208.333% */
+  letter-spacing: 2.571px;
+  text-transform: uppercase;
+
   &:hover {
     background-color: #d8d8d822;
-    border: none;
+    border: 1px solid transparent;
     cursor: pointer;
   }
   &:active {
     background-color: ${(props: buttonColor) => props.bbc};
+    border: 1px solid transparent;
   }
   &:focus {
     background-color: ${(props: buttonColor) => props.bbc};
+    border: 1px solid transparent;
   }
 `;
 
@@ -258,7 +269,8 @@ export default function Planet({
                 setSelected(0);
               }}
             >
-              01
+              <span style={{ padding: "0 28px 0 0", opacity: "0.5" }}>01</span>{" "}
+              OVERVIEW
             </InfoButton>
             <InfoButton
               bbc={buttonBackgroundColor}
@@ -266,7 +278,8 @@ export default function Planet({
                 setSelected(1);
               }}
             >
-              02
+              <span style={{ padding: "0 28px 0 0", opacity: "0.5" }}>02</span>{" "}
+              Internal Structure
             </InfoButton>
             <InfoButton
               bbc={buttonBackgroundColor}
@@ -274,7 +287,8 @@ export default function Planet({
                 setSelected(2);
               }}
             >
-              03
+              <span style={{ padding: "0 28px 0 0", opacity: "0.5" }}>03</span>{" "}
+              Surface Geology
             </InfoButton>
           </Buttons>
         </PlanetAside>
