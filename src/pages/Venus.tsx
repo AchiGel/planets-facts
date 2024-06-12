@@ -22,6 +22,7 @@ export default function Venus() {
       planetGeologySource={Venus?.geology.source}
       planetInternal={Venus?.images.internal}
       planetGeologyImg={Venus?.images.geology}
+      buttonBackgroundColor="#EDA249"
     />
   );
 }

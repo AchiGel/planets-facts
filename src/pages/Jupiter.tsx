@@ -22,6 +22,7 @@ export default function Jupiter() {
       planetGeologySource={Jupiter?.geology.source}
       planetInternal={Jupiter?.images.internal}
       planetGeologyImg={Jupiter?.images.geology}
+      buttonBackgroundColor="#D83A34"
     />
   );
 }

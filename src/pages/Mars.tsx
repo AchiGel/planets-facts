@@ -22,6 +22,7 @@ export default function Mars() {
       planetGeologySource={Mars?.geology.source}
       planetInternal={Mars?.images.internal}
       planetGeologyImg={Mars?.images.geology}
+      buttonBackgroundColor="#D14C32"
     />
   );
 }

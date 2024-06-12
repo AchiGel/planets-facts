@@ -22,6 +22,7 @@ export default function Saturn() {
       planetGeologySource={Saturn?.geology.source}
       planetInternal={Saturn?.images.internal}
       planetGeologyImg={Saturn?.images.geology}
+      buttonBackgroundColor="#CD5120"
     />
   );
 }

@@ -22,6 +22,7 @@ export default function Mercury() {
       planetGeologySource={Mercury?.geology.source}
       planetInternal={Mercury?.images.internal}
       planetGeologyImg={Mercury?.images.geology}
+      buttonBackgroundColor="#419EBB"
     />
   );
 }

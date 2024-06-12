@@ -22,6 +22,7 @@ export default function Earth() {
       planetGeologySource={Earth?.geology.source}
       planetInternal={Earth?.images.internal}
       planetGeologyImg={Earth?.images.geology}
+      buttonBackgroundColor="#6D2ED5"
     />
   );
 }

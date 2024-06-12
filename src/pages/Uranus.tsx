@@ -22,6 +22,7 @@ export default function Uranus() {
       planetGeologySource={Uranus?.geology.source}
       planetInternal={Uranus?.images.internal}
       planetGeologyImg={Uranus?.images.geology}
+      buttonBackgroundColor="#1EC1A2"
     />
   );
 }

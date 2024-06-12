@@ -22,6 +22,7 @@ export default function Neptune() {
       planetGeologySource={Neptune?.geology.source}
       planetInternal={Neptune?.images.internal}
       planetGeologyImg={Neptune?.images.geology}
+      buttonBackgroundColor="#2D68F0"
     />
   );
 }

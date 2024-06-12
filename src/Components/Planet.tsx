@@ -2,6 +2,10 @@ import styled from "styled-components";
 import sourceIcon from "/assets/icon-source.svg";
 import { useState } from "react";
 
+type buttonColor = {
+  bbc: string;
+};
+
 const PlanetCont = styled.div`
   display: flex;
   flex-direction: column;
@@ -82,7 +86,7 @@ const Buttons = styled.div`
   gap: 16px;
 `;
 
-const InfoButton = styled.button`
+const InfoButton = styled.button<buttonColor>`
   padding: 12px 28px;
   background-color: transparent;
   color: white;
@@ -91,6 +95,12 @@ const InfoButton = styled.button`
     background-color: #d8d8d822;
     border: none;
     cursor: pointer;
+  }
+  &:active {
+    background-color: ${(props: buttonColor) => props.bbc};
+  }
+  &:focus {
+    background-color: ${(props: buttonColor) => props.bbc};
   }
 `;
 
@@ -173,6 +183,7 @@ export default function Planet({
   planetGeologySource,
   planetInternal,
   planetGeologyImg,
+  buttonBackgroundColor,
 }: {
   planetImg: string | undefined;
   planetName: string | undefined;
@@ -188,6 +199,7 @@ export default function Planet({
   planetGeologySource: string | undefined;
   planetInternal: string | undefined;
   planetGeologyImg: string | undefined;
+  buttonBackgroundColor: string;
 }) {
   const [selected, setSelected] = useState(0);
 
@@ -241,6 +253,7 @@ export default function Planet({
           </div>
           <Buttons>
             <InfoButton
+              bbc={buttonBackgroundColor}
               onClick={() => {
                 setSelected(0);
               }}
@@ -248,6 +261,7 @@ export default function Planet({
               01
             </InfoButton>
             <InfoButton
+              bbc={buttonBackgroundColor}
               onClick={() => {
                 setSelected(1);
               }}
@@ -255,6 +269,7 @@ export default function Planet({
               02
             </InfoButton>
             <InfoButton
+              bbc={buttonBackgroundColor}
               onClick={() => {
                 setSelected(2);
               }}
