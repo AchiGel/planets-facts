@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./Components/Header";
 import styled from "styled-components";
 import DATA from "./data.json";
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 const Wrapper = styled.div`
   display: flex;
@@ -37,10 +37,11 @@ export interface dataTypes {
 export const DataContext = createContext<dataTypes[]>([]);
 
 function App() {
+  const [dropMenu, setDropMenu] = useState(false);
   return (
     <DataContext.Provider value={DATA}>
       <Wrapper>
-        <Header />
+        <Header dropMenu={dropMenu} setDropMenu={setDropMenu} />
         <Outlet />
       </Wrapper>
     </DataContext.Provider>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import sourceIcon from "/assets/icon-source.svg";
 import { useState } from "react";
 
-type buttonColor = {
+type ButtonProps = {
   bbc: string;
 };
 
@@ -43,11 +43,9 @@ const PlanetAside = styled.aside`
 
 const PlanetAsideTitle = styled.h1`
   color: #fff;
-  font-family: "Antonio";
+  font-family: "Antonio", sans-serif;
   font-size: 80px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
   text-transform: uppercase;
   margin-bottom: 23px;
   @media screen and (max-width: 800px) {
@@ -57,11 +55,10 @@ const PlanetAsideTitle = styled.h1`
 
 const PlanetAsideDescr = styled.p`
   color: #fff;
-  font-family: "League Spartan";
+  font-family: "League Spartan", sans-serif;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 25px; /* 178.571% */
+  line-height: 25px;
   margin-bottom: 24px;
   @media screen and (max-width: 800px) {
     font-size: 11px;
@@ -71,13 +68,23 @@ const PlanetAsideDescr = styled.p`
 const PlanetSource = styled.span`
   display: inline-block;
   color: #fff;
-  font-family: "League Spartan";
+  font-family: "League Spartan", sans-serif;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 25px; /* 178.571% */
+  line-height: 25px;
   opacity: 0.5;
   margin-bottom: 39px;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+
+    img {
+      margin-left: 8px;
+    }
+  }
 `;
 
 const Buttons = styled.div`
@@ -86,17 +93,16 @@ const Buttons = styled.div`
   gap: 16px;
 `;
 
-const InfoButton = styled.button<buttonColor>`
+const InfoButton = styled.button<ButtonProps>`
   text-align: left;
   padding: 12px 28px;
   background-color: transparent;
   color: white;
   border: 1px solid #ffffff21;
-
-  font-family: "League Spartan";
+  font-family: "League Spartan", sans-serif;
   font-size: 12px;
   font-weight: 700;
-  line-height: 25px; /* 208.333% */
+  line-height: 25px;
   letter-spacing: 2.571px;
   text-transform: uppercase;
 
@@ -105,13 +111,15 @@ const InfoButton = styled.button<buttonColor>`
     border: 1px solid transparent;
     cursor: pointer;
   }
-  &:active {
-    background-color: ${(props: buttonColor) => props.bbc};
+  &:active,
+  &:focus {
+    background-color: ${(props) => props.bbc};
     border: 1px solid transparent;
   }
-  &:focus {
-    background-color: ${(props: buttonColor) => props.bbc};
-    border: 1px solid transparent;
+
+  span {
+    padding-right: 28px;
+    opacity: 0.5;
   }
 `;
 
@@ -135,7 +143,7 @@ const PlanetGeologyImg = styled.img`
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translate(-50%, 0);
+  transform: translateX(-50%);
 `;
 
 const PlanetFooter = styled.footer`
@@ -155,11 +163,10 @@ const PlanetFooterBox = styled.div`
 
 const PlanetFooterBoxTitle = styled.h4`
   color: #fff;
-  font-family: "League Spartan";
+  font-family: "League Spartan", sans-serif;
   font-size: 11px;
-  font-style: normal;
   font-weight: 700;
-  line-height: 25px; /* 227.273% */
+  line-height: 25px;
   letter-spacing: 1px;
   text-transform: uppercase;
   opacity: 0.5;
@@ -167,17 +174,33 @@ const PlanetFooterBoxTitle = styled.h4`
 
 const PlanetFooterBoxContent = styled.span`
   color: #fff;
-  font-family: "Antonio";
+  font-family: "Antonio", sans-serif;
   font-size: 40px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
   letter-spacing: -1.5px;
   text-transform: uppercase;
   @media screen and (max-width: 1045px) {
     font-size: 24px;
   }
 `;
+
+type PlanetProps = {
+  planetImg?: string;
+  planetName?: string;
+  planetOverview?: string;
+  planetSource?: string;
+  planetRotationTime?: string;
+  planetRevolutionTime?: string;
+  planetRadius?: string;
+  planetTemp?: string;
+  planetStructure?: string;
+  planetGeology?: string;
+  planetStructureSource?: string;
+  planetGeologySource?: string;
+  planetInternal?: string;
+  planetGeologyImg?: string;
+  buttonBackgroundColor: string;
+};
 
 export default function Planet({
   planetImg,
@@ -195,49 +218,24 @@ export default function Planet({
   planetInternal,
   planetGeologyImg,
   buttonBackgroundColor,
-}: {
-  planetImg: string | undefined;
-  planetName: string | undefined;
-  planetOverview: string | undefined;
-  planetSource: string | undefined;
-  planetRotationTime: string | undefined;
-  planetRevolutionTime: string | undefined;
-  planetRadius: string | undefined;
-  planetTemp: string | undefined;
-  planetStructure: string | undefined;
-  planetGeology: string | undefined;
-  planetStructureSource: string | undefined;
-  planetGeologySource: string | undefined;
-  planetInternal: string | undefined;
-  planetGeologyImg: string | undefined;
-  buttonBackgroundColor: string;
-}) {
+}: PlanetProps) {
   const [selected, setSelected] = useState(0);
 
   function selectedContent() {
-    if (selected === 0) {
-      return planetOverview;
-    } else if (selected === 1) {
-      return planetStructure;
-    }
+    if (selected === 0) return planetOverview;
+    if (selected === 1) return planetStructure;
     return planetGeology;
   }
 
   function selectedSource() {
-    if (selected === 0) {
-      return planetSource;
-    } else if (selected === 1) {
-      return planetStructureSource;
-    }
+    if (selected === 0) return planetSource;
+    if (selected === 1) return planetStructureSource;
     return planetGeologySource;
   }
 
   function selectedImg() {
-    if (selected === 0) {
-      return planetImg;
-    } else if (selected === 1) {
-      return planetInternal;
-    }
+    if (selected === 0) return planetImg;
+    if (selected === 1) return planetInternal;
     return planetImg;
   }
 
@@ -245,10 +243,13 @@ export default function Planet({
     <PlanetCont>
       <PlanetMain>
         <PlanetImages>
-          <PlanetImage src={selectedImg()} />
-          <PlanetGeologyImg
-            src={selected === 2 ? planetGeologyImg : undefined}
-          />
+          <PlanetImage src={selectedImg()} alt={`${planetName} image`} />
+          {selected === 2 && (
+            <PlanetGeologyImg
+              src={planetGeologyImg}
+              alt={`${planetName} geology image`}
+            />
+          )}
         </PlanetImages>
 
         <PlanetAside>
@@ -256,39 +257,34 @@ export default function Planet({
             <PlanetAsideTitle>{planetName}</PlanetAsideTitle>
             <PlanetAsideDescr>{selectedContent()}</PlanetAsideDescr>
             <PlanetSource>
-              Source :{" "}
-              <a href={selectedSource()} target="_blank">
-                Wikipedia <img src={sourceIcon} />
+              Source:{" "}
+              <a
+                href={selectedSource()}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Wikipedia <img src={sourceIcon} alt="source icon" />
               </a>
             </PlanetSource>
           </div>
           <Buttons>
             <InfoButton
               bbc={buttonBackgroundColor}
-              onClick={() => {
-                setSelected(0);
-              }}
+              onClick={() => setSelected(0)}
             >
-              <span style={{ padding: "0 28px 0 0", opacity: "0.5" }}>01</span>{" "}
-              OVERVIEW
+              <span>01</span> OVERVIEW
             </InfoButton>
             <InfoButton
               bbc={buttonBackgroundColor}
-              onClick={() => {
-                setSelected(1);
-              }}
+              onClick={() => setSelected(1)}
             >
-              <span style={{ padding: "0 28px 0 0", opacity: "0.5" }}>02</span>{" "}
-              Internal Structure
+              <span>02</span> Internal Structure
             </InfoButton>
             <InfoButton
               bbc={buttonBackgroundColor}
-              onClick={() => {
-                setSelected(2);
-              }}
+              onClick={() => setSelected(2)}
             >
-              <span style={{ padding: "0 28px 0 0", opacity: "0.5" }}>03</span>{" "}
-              Surface Geology
+              <span>03</span> Surface Geology
             </InfoButton>
           </Buttons>
         </PlanetAside>
@@ -305,7 +301,7 @@ export default function Planet({
           </PlanetFooterBoxContent>
         </PlanetFooterBox>
         <PlanetFooterBox>
-          <PlanetFooterBoxTitle>radius</PlanetFooterBoxTitle>
+          <PlanetFooterBoxTitle>RADIUS</PlanetFooterBoxTitle>
           <PlanetFooterBoxContent>{planetRadius}</PlanetFooterBoxContent>
         </PlanetFooterBox>
         <PlanetFooterBox>

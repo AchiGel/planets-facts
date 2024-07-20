@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -29,9 +28,7 @@ const HeaderLogo = styled.h2`
   color: #fff;
   font-family: "Antonio";
   font-size: 28px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
   letter-spacing: -1.05px;
   text-transform: uppercase;
 `;
@@ -47,6 +44,7 @@ const HeaderNavigation = styled.ul<dropMenuType>`
     top: 113px;
     left: 24px;
     gap: 0;
+    z-index: 1000;
   }
 `;
 
@@ -63,7 +61,6 @@ const HeaderNavigationItem = styled.li`
   color: #fff;
   font-family: "League Spartan";
   font-size: 11px;
-  font-style: normal;
   font-weight: 700;
   line-height: 25px;
   letter-spacing: 1px;
@@ -86,6 +83,10 @@ const PlanetIcon = styled.div`
   height: 20px;
   border-radius: 50%;
   background-color: ${(props) => props.color};
+  display: none;
+  @media screen and (max-width: 600px) {
+    display: block;
+  }
 `;
 
 const PlanetIconTitle = styled.div`
@@ -93,68 +94,79 @@ const PlanetIconTitle = styled.div`
   gap: 25px;
 `;
 
-export default function Header() {
-  const [dropMenu, setDropMenu] = useState(false);
+const PlanetArrow = styled.img`
+  display: none;
+  @media screen and (max-width: 600px) {
+    display: block;
+  }
+`;
 
+export default function Header({
+  dropMenu,
+  setDropMenu,
+}: {
+  dropMenu: boolean;
+  setDropMenu: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   return (
     <HeaderComp>
       <HeaderLogo>THE PLANETS</HeaderLogo>
       <HeaderNavigation dropMenu={dropMenu}>
         <HeaderNavigationItem>
           <PlanetIconTitle>
-            {dropMenu && <PlanetIcon color="#DEF4FC"></PlanetIcon>}
+            <PlanetIcon color="#DEF4FC"></PlanetIcon>
             <Link to="mercury">mercury</Link>
           </PlanetIconTitle>
-          <img src="assets/icon-chevron.svg" />
+          <PlanetArrow src="assets/icon-chevron.svg" />
         </HeaderNavigationItem>
         <HeaderNavigationItem>
           <PlanetIconTitle>
-            {dropMenu && <PlanetIcon color="#F7CC7F"></PlanetIcon>}
+            <PlanetIcon color="#F7CC7F"></PlanetIcon>
             <Link to="venus">venus</Link>
           </PlanetIconTitle>
-          <img src="assets/icon-chevron.svg" />
+          <PlanetArrow src="assets/icon-chevron.svg" />
         </HeaderNavigationItem>
         <HeaderNavigationItem>
           <PlanetIconTitle>
-            {dropMenu && <PlanetIcon color="#545BFE"></PlanetIcon>}
+            <PlanetIcon color="#545BFE"></PlanetIcon>
             <Link to="earth">earth</Link>
           </PlanetIconTitle>
-          <img src="assets/icon-chevron.svg" />
+          <PlanetArrow src="assets/icon-chevron.svg" />
         </HeaderNavigationItem>
         <HeaderNavigationItem>
           <PlanetIconTitle>
-            {dropMenu && <PlanetIcon color="#FF6A45"></PlanetIcon>}
+            <PlanetIcon color="#FF6A45"></PlanetIcon>
             <Link to="mars">mars</Link>
           </PlanetIconTitle>
-          <img src="assets/icon-chevron.svg" />
+          <PlanetArrow src="assets/icon-chevron.svg" />
         </HeaderNavigationItem>
         <HeaderNavigationItem>
           <PlanetIconTitle>
-            {dropMenu && <PlanetIcon color="#ECAD7A"></PlanetIcon>}
+            <PlanetIcon color="#ECAD7A"></PlanetIcon>
             <Link to="jupiter">jupiter</Link>
           </PlanetIconTitle>
-          <img src="assets/icon-chevron.svg" />
+          <PlanetArrow src="assets/icon-chevron.svg" />
         </HeaderNavigationItem>
         <HeaderNavigationItem>
           <PlanetIconTitle>
-            {dropMenu && <PlanetIcon color="#FCCB6B"></PlanetIcon>}
+            <PlanetIcon color="#FCCB6B"></PlanetIcon>
             <Link to="saturn">saturn</Link>
           </PlanetIconTitle>
-          <img src="assets/icon-chevron.svg" />
+          <PlanetArrow src="assets/icon-chevron.svg" />
         </HeaderNavigationItem>
         <HeaderNavigationItem>
           <PlanetIconTitle>
-            {dropMenu && <PlanetIcon color="#65F0D5"></PlanetIcon>}
+            <PlanetIcon color="#65F0D5"></PlanetIcon>
             <Link to="uranus">uranus</Link>
           </PlanetIconTitle>
-          <img src="assets/icon-chevron.svg" />
+          <PlanetArrow src="assets/icon-chevron.svg" />
         </HeaderNavigationItem>
         <HeaderNavigationItem>
           <PlanetIconTitle>
-            {dropMenu && <PlanetIcon color="#497EFA"></PlanetIcon>}
+            <PlanetIcon color="#497EFA"></PlanetIcon>
             <Link to="neptune">neptune</Link>
           </PlanetIconTitle>
-          <img src="assets/icon-chevron.svg" />
+          <PlanetArrow src="assets/icon-chevron.svg" />
         </HeaderNavigationItem>
       </HeaderNavigation>
       <BurgerMenu onClick={() => setDropMenu(!dropMenu)}></BurgerMenu>
