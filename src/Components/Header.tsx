@@ -45,6 +45,7 @@ const HeaderNavigation = styled.ul<dropMenuType>`
     left: 24px;
     gap: 0;
     z-index: 1000;
+    background: #070722;
   }
 `;
 

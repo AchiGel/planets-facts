@@ -39,6 +39,9 @@ const PlanetAside = styled.aside`
     max-width: none;
     align-items: center;
   }
+  @media screen and (max-width: 600px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const PlanetAsideTitle = styled.h1`
@@ -151,6 +154,10 @@ const PlanetFooter = styled.footer`
   align-items: center;
   justify-content: space-between;
   color: white;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    align-items: normal;
+  }
 `;
 
 const PlanetFooterBox = styled.div`

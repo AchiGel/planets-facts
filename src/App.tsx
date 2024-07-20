@@ -38,6 +38,7 @@ export const DataContext = createContext<dataTypes[]>([]);
 
 function App() {
   const [dropMenu, setDropMenu] = useState(false);
+
   return (
     <DataContext.Provider value={DATA}>
       <Wrapper>
