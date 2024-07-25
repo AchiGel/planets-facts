@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 type dropMenuType = {
   dropMenu: boolean;
+  menuHeight: number;
 };
 
 const HeaderComp = styled.header`
@@ -37,8 +38,8 @@ const HeaderNavigation = styled.ul<dropMenuType>`
   display: flex;
   list-style: none;
   gap: 33px;
+  transition: height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
   @media screen and (max-width: 600px) {
-    display: ${(props: dropMenuType) => (props.dropMenu ? "flex" : "none")};
     flex-direction: column;
     position: absolute;
     top: 113px;
@@ -46,6 +47,11 @@ const HeaderNavigation = styled.ul<dropMenuType>`
     gap: 0;
     z-index: 1000;
     background: #070722;
+    height: ${(props) => (props.dropMenu ? `${props.menuHeight}px` : "0")};
+    opacity: ${(props) => (props.dropMenu ? "1" : "0")};
+    transform: ${(props) =>
+      props.dropMenu ? "translateY(0)" : "translateY(-20px)"};
+    overflow: hidden;
   }
 `;
 
@@ -112,7 +118,7 @@ export default function Header({
   return (
     <HeaderComp>
       <HeaderLogo>THE PLANETS</HeaderLogo>
-      <HeaderNavigation dropMenu={dropMenu}>
+      <HeaderNavigation dropMenu={dropMenu} menuHeight={1000}>
         <HeaderNavigationItem>
           <PlanetIconTitle>
             <PlanetIcon color="#DEF4FC"></PlanetIcon>
