@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 type dropMenuType = {
@@ -115,6 +116,12 @@ export default function Header({
   dropMenu: boolean;
   setDropMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const location = useLocation();
+
+  useEffect(() => {
+    setDropMenu(false);
+  }, [location, setDropMenu]);
+
   return (
     <HeaderComp>
       <HeaderLogo>THE PLANETS</HeaderLogo>
