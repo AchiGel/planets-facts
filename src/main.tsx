@@ -19,6 +19,7 @@ import Neptune from "./pages/Neptune.tsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
+      <Route index element={<Mercury />} />
       <Route path="mercury" element={<Mercury />} />
       <Route path="mars" element={<Mars />} />
       <Route path="earth" element={<Earth />} />
