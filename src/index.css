@@ -8,8 +8,8 @@
 }
 
 body {
-  background-image: url(assets/background-stars.svg);
   background-color: #070724;
+  background-image: url("assets/background-stars.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
