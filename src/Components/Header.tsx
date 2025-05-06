@@ -3,17 +3,21 @@ import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 type dropMenuType = {
-  dropMenu: boolean;
-  menuHeight: number;
+  $dropMenu: boolean;
+  $menuHeight: number;
 };
 
 const HeaderComp = styled.header`
+  position: fixed;
+  z-index: 10000;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 85px;
   padding: 0 41px 0 32px;
   border-bottom: 1px solid #ffffff24;
+  background-color: #070724;
   @media screen and (max-width: 800px) {
     flex-direction: column;
     padding: 32px 53px 27px 51px;
@@ -42,17 +46,17 @@ const HeaderNavigation = styled.ul<dropMenuType>`
   transition: height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
   @media screen and (max-width: 600px) {
     flex-direction: column;
-    position: absolute;
-    top: 113px;
+    position: fixed;
+    top: 70px;
     left: 24px;
     gap: 0;
     z-index: 1000;
     background: #070722;
-    height: ${(props) => (props.dropMenu ? `${props.menuHeight}px` : "0")};
-    opacity: ${(props) => (props.dropMenu ? "1" : "0")};
+    height: ${(props) => (props.$dropMenu ? `${props.$menuHeight}vh` : "0")};
+    opacity: ${(props) => (props.$dropMenu ? "1" : "0")};
     transform: ${(props) =>
-      props.dropMenu ? "translateY(0)" : "translateY(-20px)"};
-    overflow: hidden;
+      props.$dropMenu ? "translateY(0)" : "translateY(-20px)"};
+    overflow-y: scroll;
   }
 `;
 
@@ -118,6 +122,17 @@ export default function Header({
 }) {
   const location = useLocation();
 
+  const planets = [
+    { color: "#DEF4FC", planetName: "mercury" },
+    { color: "#F7CC7F", planetName: "venus" },
+    { color: "#545BFE", planetName: "earth" },
+    { color: "#FF6A45", planetName: "mars" },
+    { color: "#ECAD7A", planetName: "jupiter" },
+    { color: "#FCCB6B", planetName: "saturn" },
+    { color: "#65F0D5", planetName: "uranus" },
+    { color: "#497EFA", planetName: "neptune" },
+  ];
+
   useEffect(() => {
     setDropMenu(false);
   }, [location, setDropMenu]);
@@ -125,64 +140,20 @@ export default function Header({
   return (
     <HeaderComp>
       <HeaderLogo>THE PLANETS</HeaderLogo>
-      <HeaderNavigation dropMenu={dropMenu} menuHeight={1000}>
-        <HeaderNavigationItem>
-          <PlanetIconTitle>
-            <PlanetIcon color="#DEF4FC"></PlanetIcon>
-            <Link to="mercury">mercury</Link>
-          </PlanetIconTitle>
-          <PlanetArrow src="assets/icon-chevron.svg" />
-        </HeaderNavigationItem>
-        <HeaderNavigationItem>
-          <PlanetIconTitle>
-            <PlanetIcon color="#F7CC7F"></PlanetIcon>
-            <Link to="venus">venus</Link>
-          </PlanetIconTitle>
-          <PlanetArrow src="assets/icon-chevron.svg" />
-        </HeaderNavigationItem>
-        <HeaderNavigationItem>
-          <PlanetIconTitle>
-            <PlanetIcon color="#545BFE"></PlanetIcon>
-            <Link to="earth">earth</Link>
-          </PlanetIconTitle>
-          <PlanetArrow src="assets/icon-chevron.svg" />
-        </HeaderNavigationItem>
-        <HeaderNavigationItem>
-          <PlanetIconTitle>
-            <PlanetIcon color="#FF6A45"></PlanetIcon>
-            <Link to="mars">mars</Link>
-          </PlanetIconTitle>
-          <PlanetArrow src="assets/icon-chevron.svg" />
-        </HeaderNavigationItem>
-        <HeaderNavigationItem>
-          <PlanetIconTitle>
-            <PlanetIcon color="#ECAD7A"></PlanetIcon>
-            <Link to="jupiter">jupiter</Link>
-          </PlanetIconTitle>
-          <PlanetArrow src="assets/icon-chevron.svg" />
-        </HeaderNavigationItem>
-        <HeaderNavigationItem>
-          <PlanetIconTitle>
-            <PlanetIcon color="#FCCB6B"></PlanetIcon>
-            <Link to="saturn">saturn</Link>
-          </PlanetIconTitle>
-          <PlanetArrow src="assets/icon-chevron.svg" />
-        </HeaderNavigationItem>
-        <HeaderNavigationItem>
-          <PlanetIconTitle>
-            <PlanetIcon color="#65F0D5"></PlanetIcon>
-            <Link to="uranus">uranus</Link>
-          </PlanetIconTitle>
-          <PlanetArrow src="assets/icon-chevron.svg" />
-        </HeaderNavigationItem>
-        <HeaderNavigationItem>
-          <PlanetIconTitle>
-            <PlanetIcon color="#497EFA"></PlanetIcon>
-            <Link to="neptune">neptune</Link>
-          </PlanetIconTitle>
-          <PlanetArrow src="assets/icon-chevron.svg" />
-        </HeaderNavigationItem>
-      </HeaderNavigation>
+      <nav>
+        <HeaderNavigation $dropMenu={dropMenu} $menuHeight={100}>
+          {planets.map((p, i) => (
+            <HeaderNavigationItem key={i}>
+              <PlanetIconTitle>
+                <PlanetIcon color={p.color}></PlanetIcon>
+                <Link to={p.planetName}>{p.planetName}</Link>
+              </PlanetIconTitle>
+              <PlanetArrow src="assets/icon-chevron.svg" />
+            </HeaderNavigationItem>
+          ))}
+        </HeaderNavigation>
+      </nav>
+
       <BurgerMenu onClick={() => setDropMenu(!dropMenu)}></BurgerMenu>
     </HeaderComp>
   );

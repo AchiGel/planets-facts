@@ -9,9 +9,9 @@ type ButtonProps = {
 const PlanetCont = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 5% 165px 51px;
+  padding: 10% 165px 51px;
   @media screen and (max-width: 1045px) {
-    padding: 16px 39px 36px;
+    padding: 100px 39px 36px;
   }
 `;
 
@@ -24,6 +24,7 @@ const PlanetMain = styled.main`
   @media screen and (max-width: 800px) {
     flex-direction: column;
     margin-bottom: 27px;
+    gap: 20px;
   }
 `;
 
@@ -41,6 +42,7 @@ const PlanetAside = styled.aside`
   }
   @media screen and (max-width: 600px) {
     flex-direction: column-reverse;
+    gap: 20px;
   }
 `;
 
@@ -191,6 +193,13 @@ const PlanetFooterBoxContent = styled.span`
   }
 `;
 
+const PlanetAsideDiv = styled.div`
+  width: 50%;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+`;
+
 type PlanetProps = {
   planetImg?: string;
   planetName?: string;
@@ -260,7 +269,7 @@ export default function Planet({
         </PlanetImages>
 
         <PlanetAside>
-          <div style={{ width: "50%" }}>
+          <PlanetAsideDiv>
             <PlanetAsideTitle>{planetName}</PlanetAsideTitle>
             <PlanetAsideDescr>{selectedContent()}</PlanetAsideDescr>
             <PlanetSource>
@@ -273,7 +282,7 @@ export default function Planet({
                 Wikipedia <img src={sourceIcon} alt="source icon" />
               </a>
             </PlanetSource>
-          </div>
+          </PlanetAsideDiv>
           <Buttons>
             <InfoButton
               bbc={buttonBackgroundColor}
